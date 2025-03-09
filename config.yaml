@@ -214,9 +214,9 @@ rule-anchor:
 rule-providers:
   AWAvenue-Ads:
     type: http
-    behavior: domain
+    behavior: classical
     format: yaml
-    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash.yaml"
+    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-classical.yaml"
     interval: 86400
   fakeip-filter:
     <<: *domain
