@@ -1,8 +1,10 @@
 # YuanShen
 原神虚空终端配置文件
-各项参数代表的意义请查阅官方wiki:https://wiki.metacubex.one/
+
+各项参数注释请查阅官方wiki：https://wiki.metacubex.one/
 
 本配置文件基于官方RULE-SET示例配置修改而来(2025.03.08)
+
 
 改动如下：
 
