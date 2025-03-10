@@ -1,7 +1,7 @@
 # url 里填写自己的订阅,名称不能重复
 proxy-providers:
   provider1:
-    url: "你的订阅链接"
+    url: ""
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://cp.cloudflare.com",interval: 300}
