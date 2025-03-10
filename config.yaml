@@ -9,7 +9,7 @@ proxy-providers:
       # additional-prefix: "[provider1]"
 
   # provider2:
-    # url: "你的订阅链接"
+    # url: ""
     # type: http
     # interval: 86400
     # health-check: {enable: true,url: "https://cp.cloudflare.com",interval: 300}
@@ -74,15 +74,11 @@ dns:
     - "+.local"
     - "+.market.xiaomi.com"
     - "rule-set:fakeip-filter,private_domain,bilibili_domain,cn_domain"
-  default-nameserver:
-    - tls://223.5.5.5
-    - tls://223.6.6.6
   nameserver:
-    - 'https://doh.pub/dns-query#ecs=你的公网ipv4地址/24&ecs-override=true'
-    - 'https://dns.alidns.com/dns-query#h3=true&ecs=你的公网ipv4地址/24&ecs-override=true'
+    - 223.5.5.5
+    - 119.29.29.29
   proxy-server-nameserver:
-    - 'https://doh.pub/dns-query#ecs=你的公网ipv4地址/24&ecs-override=true'
-    - 'https://dns.alidns.com/dns-query#h3=true&ecs=你的公网ipv4地址/24&ecs-override=true'
+    - system
   nameserver-policy:
     "rule-set:private_domain,bilibili_domain,cn_domain":
       - system
