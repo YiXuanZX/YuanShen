@@ -13,15 +13,15 @@
 
 将Clash控制面板更换为Zashboard，个人更喜欢Zashboard
 
-私有域名，cn域名，bilibili域名及其他域名(详见fakeip-filter规则集)使用realip，改善兼容性
+局域网域名，cn域名，bilibili域名及其他域名(详见fakeip-filter规则集)使用realip，改善兼容性
 
-私有域名，cn域名，bilibili域名使用系统dns解析(即ISP下发dns)，解决局域网设备互联问题，优先使用离你地理位置最近的CDN，优化视频加载速度等
+局域网域名，cn域名，bilibili域名使用系统dns解析(即ISP下发dns)，解决局域网设备互联问题，优先使用离你地理位置最近的CDN，优化视频加载速度等
 
 节点域名使用系统dns解析，用以适配多入口的机场
 
 哔哩哔哩策略组默认直连
 
-私有域名直连
+局域网域名直连
 
 添加秋风广告规则，拦截常见广告SDK域名(不建议使用anti等其他规则，文件过大，影响clash域名匹配效率)
 
