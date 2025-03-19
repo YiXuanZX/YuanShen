@@ -70,14 +70,14 @@ dns:
     - "+.lan"
     - "+.local"
     - "+.market.xiaomi.com"
-    - "rule-set:fakeip-filter,private_domain,bilibili_domain,cn_domain"
+    - "rule-set:fakeip-filter,private_domain,cn_domain"
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
   proxy-server-nameserver:
     - system
   nameserver-policy:
-    "rule-set:private_domain,bilibili_domain,cn_domain":
+    "rule-set:private_domain,cn_domain":
       - system
 
 proxy-groups:
@@ -206,11 +206,8 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
 rule-providers:
   AWAvenue-Ads:
-    type: http
-    behavior: classical
-    format: yaml
-    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/refs/heads/main/Filters/AWAvenue-Ads-Rule-Clash-classical.yaml"
-    interval: 86400
+    <<: *domain
+    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs"
   fakeip-filter:
     <<: *domain
     url: "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/fakeip-filter.mrs"
