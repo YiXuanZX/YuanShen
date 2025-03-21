@@ -13,6 +13,8 @@
 
 将Clash控制面板更换为Zashboard，个人更喜欢Zashboard
 
+跳过对局域网域名，cn域名的嗅探
+
 局域网域名，cn域名及其他域名(详见fakeip-filter规则集)使用realip，改善兼容性
 
 局域网域名，cn域名使用系统dns解析(即ISP下发的dns)，解决局域网设备互联问题，优先使用离你地理位置最近的CDN，优化视频加载速度等
