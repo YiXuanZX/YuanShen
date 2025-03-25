@@ -27,6 +27,8 @@ nameserver使用非加密的公共dns，若当地ISP的dns干扰不严重则没�
 
 私网域名直连
 
+将非cn域名规则放在cn域名规则之前，解决国内公司的海外网站因主域名在cn域名列表里而被阻止访问的问题
+
 添加秋风广告规则，拦截常见广告SDK域名(不建议使用anti等其他规则，规则数量过多，影响clash的规则匹配效率)
 
 删除没有使用的biliintl_domain，ehentai_domain，pixiv_domain规则集
