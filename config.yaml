@@ -166,7 +166,7 @@ proxy-groups:
     type: select
     include-all: true
     exclude-type: direct
-    filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|狮|sg|singapore|美|us|unitedstates)).*"
+    filter: "(?i)^(?!.*(?:港|hk|hongkong|台|tw|taiwan|日|jp|japan|狮|sg|singapore|美|us|unitedstates)).*"
 
   - name: 全部节点
     type: select
