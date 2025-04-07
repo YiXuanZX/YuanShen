@@ -1,6 +1,6 @@
 proxy-providers:
   provider:
-    url: ""
+    url: "https://api.stentvessel.club/osubscribe.php?sid=24228&token=MHlCWEysGdVv"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://cp.cloudflare.com",interval: 300}
@@ -9,8 +9,10 @@ proxy-providers:
 mixed-port: 7890
 ipv6: true
 allow-lan: false
+
 unified-delay: false
 tcp-concurrent: true
+
 external-controller: 127.0.0.1:9090
 external-ui: ui
 external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
@@ -121,19 +123,23 @@ rules:
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+
 rule-providers:
+
   AWAvenue-Ads:
     <<: *domain
     url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs"
   fakeip-filter:
     <<: *domain
     url: "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/fakeip-filter.mrs"
+
   private_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
   cn_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+
   gfw_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"
