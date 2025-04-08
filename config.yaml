@@ -1,64 +1,63 @@
 proxy-providers:
-  provider:
-    url: "https://api.stentvessel.club/osubscribe.php?sid=24228&token=MHlCWEysGdVv"
+  V2Tun:
+    url: 
     type: http
     interval: 86400
-    health-check: {enable: true,url: "https://cp.cloudflare.com",interval: 300}
-    exclude-filter: "(?i)Traffic|Expire"
-
+    path: ./proxy_providers/V2Tun.yaml
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com
+      interval: 300
+    exclude-filter: (?i)Traffic|Expire
 mixed-port: 7890
 ipv6: true
 allow-lan: false
-
 unified-delay: false
 tcp-concurrent: true
-
 external-controller: 127.0.0.1:9090
 external-ui: ui
-external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
-
+external-ui-url: https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 find-process-mode: strict
 global-client-fingerprint: chrome
-
 profile:
   store-selected: true
   store-fake-ip: true
-
 sniffer:
   enable: true
   sniff:
     HTTP:
-      ports: [80, 8080-8880]
+      ports:
+        - 80
+        - 8080-8880
       override-destination: true
     TLS:
-      ports: [443, 8443]
+      ports:
+        - 443
+        - 8443
     QUIC:
-      ports: [443, 8443]
+      ports:
+        - 443
+        - 8443
   skip-domain:
-    - "Mijia Cloud"
-    - "+.push.apple.com"
-    - "rule-set:private_domain,cn_domain"
-
+    - Mijia Cloud
+    - +.push.apple.com
+    - rule-set:private_domain,cn_domain
 tun:
   enable: true
   stack: mixed
   dns-hijack:
-    - "any:53"
-    - "tcp://any:53"
+    - any:53
+    - tcp://any:53
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
-
 dns:
   enable: true
   ipv6: true
   enhanced-mode: fake-ip
   fake-ip-filter:
     - "*"
-    - "+.lan"
-    - "+.local"
-    - "+.market.xiaomi.com"
-    - "rule-set:fakeip-filter,private_domain,cn_domain"
+    - rule-set:fakeip-filter,private_domain,cn_domain
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
@@ -67,89 +66,101 @@ dns:
   nameserver-policy:
     "rule-set:private_domain,cn_domain":
       - system
-
 proxy-groups:
-
   - name: 代理
     type: select
-    proxies: [香港,台湾,日本,美国,新加坡,其它地区]
-
+    proxies:
+      - 香港
+      - 台湾
+      - 日本
+      - 美国
+      - 新加坡
+      - 其它地区
   - name: 香港
     type: url-test
     include-all: true
     exclude-type: direct
-    filter: "(?i)港|hk|hongkong"
-
+    filter: (?i)港|hk|hongkong
   - name: 台湾
     type: url-test
     include-all: true
     exclude-type: direct
-    filter: "(?i)台|tw|taiwan"
-
+    filter: (?i)台|tw|taiwan
   - name: 日本
     type: url-test
     include-all: true
     exclude-type: direct
-    filter: "(?i)日|jp|japan"
-
+    filter: (?i)日|jp|japan
   - name: 美国
     type: url-test
     include-all: true
     exclude-type: direct
-    filter: "(?i)美|us|unitedstates"
-
+    filter: (?i)美|us|unitedstates
   - name: 新加坡
     type: url-test
     include-all: true
     exclude-type: direct
-    filter: "(?i)狮|sg|singapore"
-
+    filter: (?i)狮|sg|singapore
   - name: 其它地区
     type: select
     include-all: true
     exclude-type: direct
-    filter: "(?i)^(?!.*(?:港|hk|hongkong|台|tw|taiwan|日|jp|japan|狮|sg|singapore|美|us|unitedstates)).*"
-
+    filter: (?i)^(?!.*(?:港|hk|hongkong|台|tw|taiwan|日|jp|japan|狮|sg|singapore|美|us|unitedstates)).*
 rules:
   - RULE-SET,AWAvenue-Ads,REJECT
   - RULE-SET,private_ip,DIRECT,no-resolve
   - RULE-SET,private_domain,DIRECT
-  - RULE-SET,gfw_domain,代理
+  - RULE-SET,proxy_domain,代理
   - RULE-SET,cn_domain,DIRECT
-  - RULE-SET,geolocation-!cn,代理
   - RULE-SET,cn_ip,DIRECT
   - MATCH,代理
-
-rule-anchor:
-  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
-  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
-
 rule-providers:
-
   AWAvenue-Ads:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs"
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./rule_providers/AWAvenue-Ads-Rule-Clash.mrs
+    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs
   fakeip-filter:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/fakeip-filter.mrs"
-
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./rule_providers/fakeip-filter.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs
   private_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./rule_providers/private.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs
   cn_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
-
-  gfw_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs"
-  geolocation-!cn:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"
-
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./rule_providers/cn.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs
+  proxy_domain:
+    type: http
+    interval: 86400
+    behavior: domain
+    format: mrs
+    path: ./rule_providers/proxy.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs
   private_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./rule_providers/privateip.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/privateip.mrs
   cn_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
+    type: http
+    interval: 86400
+    behavior: ipcidr
+    format: mrs
+    path: ./rule_providers/cnip.mrs
+    url: https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs
