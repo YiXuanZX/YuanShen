@@ -25,12 +25,8 @@ nameserver使用非加密的公共dns，若当地ISP的dns干扰不严重则没�
 
 私有域名直连
 
-在cn域名规则之前加入gfw域名规则，解决国内公司的海外网站因主域名在cn域名列表里而被阻止访问的问题
-
 添加秋风广告规则，拦截常见广告SDK域名(不建议使用anti等其他规则，规则数量过多，影响clash的规则匹配效率)
-
-港、台、日、美、新策略组改为自动选择
 
 删除大量规则、规则集、策略组，此处不一一列举，请自行查看配置文件
 
-规则地址更换为https://github.com/DustinWin/ruleset_geodata/tree/mihomo-ruleset
+规则源替换为https://github.com/DustinWin/ruleset_geodata/tree/mihomo-ruleset
