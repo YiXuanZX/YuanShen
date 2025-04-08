@@ -32,3 +32,5 @@ nameserver使用非加密的公共dns，若当地ISP的dns干扰不严重则没�
 港、台、日、美、新策略组改为自动选择
 
 删除大量规则、规则集、策略组，此处不一一列举，请自行查看配置文件
+
+规则地址更换为https://github.com/DustinWin/ruleset_geodata/tree/mihomo-ruleset
