@@ -78,27 +78,27 @@ proxy-groups:
       - 其它
   - name: 香港
     type: select
-    include-all: true
+    include-all-providers: true
     filter: (?i)港|hk|hongkong
   - name: 台湾
     type: select
-    include-all: true
+    include-all-providers: true
     filter: (?i)台|tw|taiwan
   - name: 日本
     type: select
-    include-all: true
+    include-all-providers: true
     filter: (?i)日|jp|japan
   - name: 美国
     type: select
-    include-all: true
+    include-all-providers: true
     filter: (?i)美|us|unitedstates
   - name: 新加坡
     type: select
-    include-all: true
+    include-all-providers: true
     filter: (?i)狮|sg|singapore
   - name: 其它
     type: select
-    include-all: true
+    include-all-providers: true
     filter: (?i)^(?!.*(?:港|hk|hongkong|台|tw|taiwan|日|jp|japan|狮|sg|singapore|美|us|unitedstates)).*
 rules:
   - RULE-SET,AWAvenue-Ads,REJECT
