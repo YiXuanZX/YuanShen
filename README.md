@@ -25,8 +25,6 @@ nameserver使用非加密的公共dns，若当地ISP的dns干扰不严重则没�
 
 私有域名直连
 
-添加秋风广告规则，拦截常见广告SDK域名(不建议使用anti等其他规则，规则数量过多，影响clash的规则匹配效率)
-
 删除大量规则、规则集、策略组，此处不一一列举，请自行查看配置文件
 
-规则源替换为https://github.com/DustinWin/ruleset_geodata/tree/mihomo-ruleset
+规则源替换为https://github.com/peiyingyao/Rule-for-OCD
