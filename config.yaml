@@ -147,7 +147,7 @@ rule-providers:
   real-ip:
     <<: *domain
     path: ./rule_providers/real-ip.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter-lite.mrs"
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs"
   telegram:
     <<: *domain
     path: ./rule_providers/telegram.mrs
