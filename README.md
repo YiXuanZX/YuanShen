@@ -28,3 +28,5 @@ nameserver使用非加密的公共dns，若当地ISP的dns干扰不严重则没�
 删除大量规则、规则集、策略组，此处不一一列举，请自行查看配置文件
 
 规则源替换为https://github.com/peiyingyao/Rule-for-OCD
+
+屏蔽youtube的443端口udp流量，禁止youtube使用quic协议，防止播放视频时卡顿
