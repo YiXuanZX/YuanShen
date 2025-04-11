@@ -102,6 +102,7 @@ rules:
   - RULE-SET,telegram,Telegram
   - RULE-SET,telegram_ip,Telegram,no-resolve
   - RULE-SET,twitter,Twitter
+  - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),REJECT
   - RULE-SET,youtube,YouTube
   - RULE-SET,non-cn,国外
   - RULE-SET,cn,国内
